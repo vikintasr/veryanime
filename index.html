@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Very Anime Bracket</title>
+    <meta
+      name="description"
+      content="A GitHub Pages-ready League of Legends skin showdown bracket with randomized matchups, very anime energy, and simple voting handoff."
+    />
+    <link rel="preconnect" href="https://raw.communitydragon.org" />
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Very Anime Cup</p>
+          <h1>Very Anime Bracket</h1>
+          <p class="hero-text">
+            A deeply unserious playoff for the most anime-coded League skin in
+            your list. Click your winners, send the vote bundle to the admin,
+            then let the bracket ascend to the next dramatic arc.
+          </p>
+        </div>
+
+        <div class="hero-panel">
+          <div class="stat-grid" id="statGrid"></div>
+
+          <div class="hero-actions">
+            <button id="shuffleButton" class="primary-button" type="button">
+              Shuffle The Arc
+            </button>
+            <button id="resetButton" class="ghost-button" type="button">
+              Clear Official Winners
+            </button>
+          </div>
+
+          <div class="mode-toggle" role="group" aria-label="Mode toggle">
+            <button id="viewerModeButton" class="chip-button active" type="button">
+              I Am Voting
+            </button>
+            <button id="adminModeButton" class="chip-button" type="button">
+              Admin Throne
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar">
+        <div class="toolbar-copy">
+          <h2>Vote Drop</h2>
+          <p>
+            Pick winners for the currently open round, then send your choices as
+            a shareable vote payload. Admin mode is where official winners get
+            crowned.
+          </p>
+        </div>
+
+        <div class="toolbar-actions">
+          <input
+            id="voterName"
+            class="name-input"
+            type="text"
+            maxlength="32"
+            placeholder="Your name / alias"
+          />
+          <button id="sendVotesButton" class="primary-button" type="button">
+            Send Votes To Admin
+          </button>
+          <button id="exportButton" class="ghost-button" type="button">
+            Export State
+          </button>
+          <button id="importButton" class="ghost-button" type="button">
+            Import State
+          </button>
+          <button id="copyButton" class="ghost-button" type="button">
+            Copy JSON
+          </button>
+        </div>
+      </section>
+
+      <section class="state-panel">
+        <label class="state-label" for="statePayload">
+          Vote / bracket payload
+        </label>
+        <textarea
+          id="statePayload"
+          rows="6"
+          spellcheck="false"
+          placeholder="Vote payloads and exported bracket state appear here. Paste JSON here, then click Import State."
+        ></textarea>
+      </section>
+
+      <section class="notice-bar" id="noticeBar" aria-live="polite"></section>
+
+      <section class="match-panel">
+        <div class="section-head">
+          <h2>Bracket</h2>
+          <p id="matchSummary"></p>
+        </div>
+        <div id="bracket" class="bracket"></div>
+      </section>
+
+      <section class="match-panel">
+        <div class="section-head">
+          <h2>Skin Matches</h2>
+          <p id="resolutionSummary"></p>
+        </div>
+        <div id="resolutionList" class="resolution-list"></div>
+      </section>
+    </div>
+
+    <template id="competitorCardTemplate">
+      <article class="competitor-card">
+        <div class="media-stack">
+          <div class="media-frame media-frame-main"></div>
+          <div class="media-frame media-frame-preview"></div>
+        </div>
+        <div class="competitor-copy">
+          <div class="competitor-topline">
+            <p class="requested-label"></p>
+            <span class="winner-badge">Advancing</span>
+          </div>
+          <h3 class="skin-name"></h3>
+          <p class="skin-meta"></p>
+          <div class="competitor-links">
+            <a class="showcase-link" target="_blank" rel="noreferrer">Showcase</a>
+            <a class="asset-link" target="_blank" rel="noreferrer">Splash</a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
