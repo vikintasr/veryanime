@@ -131,6 +131,15 @@ function titleCase(text) {
     .join(" ");
 }
 
+function shuffleArray(items) {
+  const clone = [...items];
+  for (let i = clone.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [clone[i], clone[j]] = [clone[j], clone[i]];
+  }
+  return clone;
+}
+
 function scoreSkinMatch(requestedName, candidateName) {
   const requested = normalizeKey(requestedName);
   const candidate = normalizeKey(candidateName);
@@ -568,7 +577,7 @@ function restoreSlotsFromSession() {
 }
 
 async function init() {
-  const participants = await resolveParticipants();
+  const participants = shuffleArray(await resolveParticipants());
   const left = participants.slice(0, 16);
   const right = participants.slice(16, 32);
 
