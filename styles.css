@@ -1,12 +1,12 @@
 :root {
-  --panel: rgba(255, 251, 244, 0.97);
-  --ink: #1b1511;
-  --muted: #6c5b4b;
-  --red: #c7474a;
-  --gold: #be8a32;
-  --line: rgba(27, 21, 17, 0.14);
-  --shadow: 0 24px 60px rgba(41, 20, 11, 0.16);
-  --row-h: 136px;
+  --panel: rgba(255, 248, 232, 0.98);
+  --ink: #2d1807;
+  --muted: #7d5a34;
+  --red: #7b2f6b;
+  --gold: #d89a2f;
+  --line: rgba(72, 40, 16, 0.2);
+  --shadow: 0 24px 60px rgba(64, 34, 10, 0.2);
+  --row-h: 152px;
 }
 
 * {
@@ -19,9 +19,10 @@ body {
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
   background:
-    radial-gradient(circle at 8% 0%, rgba(199, 71, 74, 0.12), transparent 30%),
-    radial-gradient(circle at 90% 16%, rgba(190, 138, 50, 0.14), transparent 32%),
-    linear-gradient(180deg, #fbf3e8 0%, #efe5d4 100%);
+    radial-gradient(circle at 12% 0%, rgba(123, 47, 107, 0.19), transparent 34%),
+    radial-gradient(circle at 88% 18%, rgba(216, 154, 47, 0.22), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(111, 67, 20, 0.17), transparent 45%),
+    linear-gradient(180deg, #fff4dc 0%, #f1d9a7 100%);
 }
 
 .page-shell {
@@ -42,6 +43,15 @@ body {
 .hero {
   padding: 18px 20px;
   text-align: center;
+  background:
+    linear-gradient(180deg, rgba(255, 240, 204, 0.95), rgba(252, 228, 172, 0.9)),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(123, 47, 107, 0.07),
+      rgba(123, 47, 107, 0.07) 8px,
+      rgba(255, 255, 255, 0.2) 8px,
+      rgba(255, 255, 255, 0.2) 16px
+    );
 }
 
 .eyebrow,
@@ -55,7 +65,8 @@ body {
 
 .eyebrow {
   margin: 0;
-  color: var(--red);
+  color: #5a1d4e;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 h1 {
@@ -63,6 +74,10 @@ h1 {
   font-size: clamp(2.2rem, 5vw, 5rem);
   line-height: 0.92;
   font-style: italic;
+  color: #42230f;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.72),
+    0 6px 18px rgba(103, 55, 15, 0.22);
 }
 
 .preview-pane {
@@ -223,7 +238,7 @@ h1 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  background: rgba(190, 138, 50, 0.14);
+  background: linear-gradient(180deg, rgba(216, 154, 47, 0.32), rgba(199, 137, 35, 0.16));
 }
 
 .versus-pill {
@@ -234,12 +249,12 @@ h1 {
   font-size: 0.64rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--red);
-  background: rgba(199, 71, 74, 0.1);
+  color: #6f255f;
+  background: rgba(123, 47, 107, 0.14);
 }
 
 .team-card {
-  background: rgba(255, 255, 255, 0.86);
+  background: linear-gradient(180deg, rgba(255, 252, 245, 0.95), rgba(255, 239, 203, 0.78));
   border: 1px solid rgba(27, 21, 17, 0.12);
   border-radius: 10px;
   padding: 5px;
@@ -264,15 +279,15 @@ h1 {
   display: block;
   margin-top: 4px;
   text-align: center;
-  font-size: 0.88rem;
-  line-height: 1.15;
-  min-height: 2.1em;
+  font-size: 0.84rem;
+  line-height: 1.12;
+  min-height: 1.9em;
 }
 
 .team-card:hover {
   transform: scale(1.025);
-  border-color: rgba(199, 71, 74, 0.35);
-  box-shadow: 0 8px 18px rgba(57, 29, 12, 0.2);
+  border-color: rgba(123, 47, 107, 0.45);
+  box-shadow: 0 10px 22px rgba(75, 34, 13, 0.28);
 }
 
 .slot {
@@ -286,8 +301,8 @@ h1 {
 }
 
 .slot.drag-over {
-  border-color: rgba(199, 71, 74, 0.55);
-  background: rgba(255, 240, 227, 0.94);
+  border-color: rgba(123, 47, 107, 0.55);
+  background: rgba(255, 229, 185, 0.92);
 }
 
 .slot-team {
@@ -352,17 +367,18 @@ h1 {
   border: 2px solid var(--line);
   border-radius: 18px;
   background:
-    radial-gradient(circle at top, rgba(199, 71, 74, 0.1), transparent 42%),
-    #fff8ee;
+    radial-gradient(circle at top, rgba(123, 47, 107, 0.2), transparent 45%),
+    linear-gradient(180deg, #fff3d8 0%, #f7d999 100%);
   padding: 10px;
 }
 
 .trophy {
   margin: 8px 0 10px;
   text-align: center;
-  color: var(--gold);
+  color: #a4660f;
   font-size: 1.18rem;
   font-style: italic;
+  font-weight: 700;
 }
 
 .final-slot {
@@ -372,7 +388,8 @@ h1 {
 .champion-slot {
   min-height: 128px;
   margin-top: 8px;
-  background: linear-gradient(180deg, rgba(190, 138, 50, 0.14), rgba(255, 255, 255, 0.72));
+  background: linear-gradient(180deg, rgba(216, 154, 47, 0.28), rgba(255, 255, 255, 0.7));
+  border-color: rgba(164, 102, 15, 0.4);
 }
 
 @media (max-width: 1450px) {
