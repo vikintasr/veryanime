@@ -40,6 +40,7 @@ const rightConference = document.querySelector("#rightConference");
 const previewPane = document.querySelector("#previewPane");
 const previewImage = document.querySelector("#previewImage");
 const previewName = document.querySelector("#previewName");
+const previewClose = document.querySelector("#previewClose");
 
 function fallbackSplash(name) {
   const label = name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -396,14 +397,11 @@ function hidePreview() {
 
 function attachPreviewHandlersToCard(card) {
   const payload = payloadFromCard(card);
-  card.addEventListener("mouseenter", () => showPreview(payload));
-  card.addEventListener("mouseleave", hidePreview);
+  card.addEventListener("click", () => showPreview(payload));
   card.addEventListener("dragstart", (event) => {
     event.dataTransfer.setData("application/json", JSON.stringify(payload));
     event.dataTransfer.effectAllowed = "copy";
-    showPreview(payload);
   });
-  card.addEventListener("dragend", hidePreview);
 }
 
 function attachPreviewHandlersToFilledSlot(slotTeam) {
@@ -412,14 +410,11 @@ function attachPreviewHandlersToFilledSlot(slotTeam) {
     imageSrc: slotTeam.dataset.image,
   };
 
-  slotTeam.addEventListener("mouseenter", () => showPreview(payload));
-  slotTeam.addEventListener("mouseleave", hidePreview);
+  slotTeam.addEventListener("click", () => showPreview(payload));
   slotTeam.addEventListener("dragstart", (event) => {
     event.dataTransfer.setData("application/json", JSON.stringify(payload));
     event.dataTransfer.effectAllowed = "copy";
-    showPreview(payload);
   });
-  slotTeam.addEventListener("dragend", hidePreview);
 }
 
 function normalizeSlotEntries(raw) {
@@ -552,6 +547,18 @@ function bindDragDrop() {
   });
 }
 
+function bindPreviewControls() {
+  if (previewClose) {
+    previewClose.addEventListener("click", hidePreview);
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      hidePreview();
+    }
+  });
+}
+
 function restoreSlotsFromSession() {
   const state = readSlots();
   const slots = Array.from(document.querySelectorAll(".slot[data-slot]"));
@@ -568,6 +575,7 @@ async function init() {
   buildConference(leftConference, "left", left);
   buildConference(rightConference, "right", right);
   bindDragDrop();
+  bindPreviewControls();
   restoreSlotsFromSession();
 }
 

@@ -67,20 +67,21 @@ h1 {
 
 .preview-pane {
   position: fixed;
-  left: 12px;
-  top: 130px;
-  width: 320px;
-  z-index: 1200;
+  left: 50%;
+  top: 52%;
+  width: min(72vw, 1180px);
+  z-index: 1000;
   overflow: hidden;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(8px);
+  transform: translate(-50%, -50%) scale(0.96);
   transition: opacity 160ms ease, transform 160ms ease;
+  border-radius: 20px;
 }
 
 .preview-pane.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .preview-pane img {
@@ -93,10 +94,33 @@ h1 {
 
 .preview-pane p {
   margin: 0;
-  padding: 10px 12px 12px;
+  padding: 12px 14px 14px;
   text-align: center;
-  font-size: 0.94rem;
+  font-size: 1.02rem;
   line-height: 1.25;
+  background: rgba(255, 251, 244, 0.98);
+}
+
+.preview-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(27, 21, 17, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 251, 244, 0.9);
+  color: var(--ink);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.preview-close:hover {
+  background: #fff;
 }
 
 .bracket-board {
